@@ -11,10 +11,11 @@ import {
   GET_CAPTION_WITH_MULTIPLE_TAGS,
 } from './types';
 
+const baseUrl = 'https://capcards-api.herokuapp.com/v1.0/api/'
 
 export const addCaption = (caption) => async (dispatch) => {
   try {
-    const response = await axios.post('caption', caption);
+    const response = await axios.post(`${baseUrl}caption`, caption);
     const {data} = response.data;
     dispatch({ type: ADD_CAPTION, payload: data });
     history.push('/');
@@ -25,7 +26,7 @@ export const addCaption = (caption) => async (dispatch) => {
 
 export const addTags = (tag) => async (dispatch) => {
   try {
-    const response = await axios.post('tag', tag);
+    const response = await axios.post(`${baseUrl}tag`, tag);
     const { data } = response.data;
     dispatch({ type: ADD_TAGS, payload: data.tag });
     history.push('/');
@@ -36,7 +37,7 @@ export const addTags = (tag) => async (dispatch) => {
 
 export const addTagsToCaptions = (value) => async (dispatch) => {
   try {
-    const response = await axios.post('add-tag', value);
+    const response = await axios.post(`${baseUrl}add-tag`, value);
     console.log(response);
     dispatch({ type: ADD_TAGS_TO_CAPTIONS, payload: '' });
     // history.push('/');
@@ -47,7 +48,7 @@ export const addTagsToCaptions = (value) => async (dispatch) => {
 
 export const allTags = () => async (dispatch) => {
   try {
-    const response = await axios.get('tag');
+    const response = await axios.get(`${baseUrl}tag`);
     const {data} = response.data;
     dispatch({ type: ALL_TAGS, payload: data.tags });
   } catch (err) {
@@ -57,7 +58,7 @@ export const allTags = () => async (dispatch) => {
 
 export const allCaptions = () => async (dispatch) => {
   try {
-    const response = await axios.get('caption');
+    const response = await axios.get(`${baseUrl}caption`);
     const { data } = response.data;
     console.log(data.captions);
     dispatch({ type: ALL_CAPTIONS, payload: data.captions });
@@ -69,7 +70,7 @@ export const allCaptions = () => async (dispatch) => {
 
 export const createCaptionWithTags = (value) => async (dispatch) => {
   try {
-    const response = await axios.post('caption/multi', value);
+    const response = await axios.post(`${baseUrl}caption/multi`, value);
     const {data} = response.data;
     const {createdCaption} =data;
     dispatch({ type: CREATE_CAPTION_WITH_TAGS, payload: createdCaption });
@@ -81,7 +82,7 @@ export const createCaptionWithTags = (value) => async (dispatch) => {
 
 export const getCaptionUnderTag = (id) => async (dispatch) => {
   try {
-    const response = await axios.get(`caption/withTag?tagId=${id}`);
+    const response = await axios.get(`${baseUrl}caption/withTag?tagId=${id}`);
     const { data } = response.data;
     dispatch({ type: GET_CAPTIONS_UNDER_TAG, payload: data });
     history.push('/search-result');
@@ -92,7 +93,7 @@ export const getCaptionUnderTag = (id) => async (dispatch) => {
 
 export const captionMultipleTags = (value) => async (dispatch) => {
   try {
-    const response = await axios.post('tag/array', value);
+    const response = await axios.post(`${baseUrl}tag/array`, value);
     const { data } = response.data;
     dispatch({ type: GET_CAPTION_WITH_MULTIPLE_TAGS, payload: data });
     history.push('/search-result');

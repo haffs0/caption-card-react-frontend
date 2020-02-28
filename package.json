@@ -37,7 +37,6 @@
       "last 1 safari version"
     ]
   },
-  "proxy": "https://capcards-api.herokuapp.com/v1.0/api/",
   "devDependencies": {
     "eslint-config-airbnb": "^18.0.1",
     "eslint-plugin-import": "^2.18.2",
