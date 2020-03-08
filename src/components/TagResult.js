@@ -1,13 +1,15 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import Loader from './Loader'
 
 class TagResult extends Component {
   render() {
-      console.log(this.props)
     const { tagCaption } = this.props;
-    console.log(tagCaption[0].captions)
     const value = tagCaption[0].captions;
     const captions = value.map((ele, index) => <div key={index} id={index} className="card fade-active fading"><p>{ele}</p></div>);
+    if(value.length === 0) {
+      return <Loader/>
+    }
     return (
       <div className="caption-list">
         {captions}

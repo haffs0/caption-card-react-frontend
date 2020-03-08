@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { allCaptions } from '../redux/actions';
+import Loader from './Loader'
 
 
 class CaptionList extends Component {
@@ -12,6 +13,9 @@ class CaptionList extends Component {
   render() {
     const { value } = this.props;
     const captions = value.map( (ele, index) => <div key={ele.id} id={index} className="card fade-active fading"><p>{ele.caption}</p></div>)
+    if(value.length === 0) {
+      return <Loader/>
+    }
     return (
       <div className="caption-list">
         {captions}
