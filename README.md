@@ -6,7 +6,7 @@ A users can create a card with caption.
 A tag can be created which will later be associated with a card.
 A tag can be used to search for a cards associated with the tag name.
 
-## The URL of the host site on Heroku is [Caption Cards](https://limitless-bayou-46009.herokuapp.com/)
+## Click on this link to view the site: [Caption Cards](https://limitless-bayou-46009.herokuapp.com/)
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
